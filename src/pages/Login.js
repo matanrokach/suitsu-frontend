@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import { Input, Label, Row, Button, Text } from '../styled-components';
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../features/auth/Auth';
 
 const StyledRow = styled(Row)`
@@ -9,11 +10,19 @@ const StyledRow = styled(Row)`
 	margin-bottom: 10px;
 `;
 
-const Login = ({ onLogin }) => {
+const Login = ({}) => {
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
 
 	const { login } = useAuth();
+
+	const history = useHistory();
+	// const initialRoute = items.find((item) => item.name === 'Home');
+	const initialRoute = {name: 'Home', path: '/'};
+	const onLogin = () => {
+		initialRoute &&
+			history.push(history.location.state.referrer || initialRoute.path);
+	};
 
 	const onLoginClick = async (e) => {
 		await login({ userName, password });

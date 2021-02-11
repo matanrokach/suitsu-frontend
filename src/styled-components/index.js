@@ -7,6 +7,7 @@ import Label from './Label';
 import Row from './Row';
 import Button from './Button';
 import Text from './Text';
+import Table from './Table';
 
 export {
 	Navbar,
@@ -18,4 +19,5 @@ export {
 	Row,
 	Button,
 	Text,
+	Table,
 };

@@ -5,7 +5,6 @@ import { selectUser, loginAction, logout as logoutAction } from './authSlice';
 const useAuth = (props) => {
 
 	const dispatch = useDispatch();
-	const user = useSelector(selectUser);
 
 	const login = ({ userName, password }) => {
 		return dispatch(loginAction({userName, password}));
@@ -17,7 +16,6 @@ const useAuth = (props) => {
 
 
 	return {
-		user,
 		login,
 		logout,
 	};

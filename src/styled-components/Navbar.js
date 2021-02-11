@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Container, Logo, Avatar } from './index';
+import { Container, Logo, Avatar, Button } from './index';
 import { Colors } from '../constants';
 
 const StyledNavBar = styled.div`
