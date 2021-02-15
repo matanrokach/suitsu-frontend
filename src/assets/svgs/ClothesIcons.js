@@ -27,8 +27,23 @@ const getClothesIcons = (width = ICON_WIDTH) => ({
 	[Clothes.Hat]: <HatIcon width={width} />,
 });
 
+const clothesNames = {
+	[Clothes.Jacket]: 'Jacket',
+	[Clothes.Coat]: 'Coat',
+	[Clothes.Pants]: 'Pants',
+	[Clothes.Shorts]: 'Shorts',
+	[Clothes.Scarf]: 'Scarf',
+	[Clothes.Boots]: 'Boots',
+	[Clothes.Sweatshirt]: 'Sweatshirt',
+	[Clothes.Shirt]: 'Shirt',
+	[Clothes.TShirt]: 'T-Shirt',
+	[Clothes.Sneakers]: 'Sneakers',
+	[Clothes.Sandals]: 'Sandals',
+	[Clothes.Hat]: 'Hat',
+};
+
 const ClothesIcons = getClothesIcons(ICON_WIDTH);
 
-export { getClothesIcons };
+export { getClothesIcons, clothesNames };
 
 export default ClothesIcons;
