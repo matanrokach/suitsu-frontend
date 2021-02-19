@@ -11,6 +11,16 @@ const Clothes = {
 	Sneakers: 'sneakers',
 	Sandals: 'sandals',
 	Hat: 'hat',
+	Cap: 'cap',
+	Scarf: 'scarf',
+	Socks: 'socks',
+	Glasses: 'glasses',
+	Gloves: 'gloves',
+	Hoodie: 'hoodie',
+	Umbrella: 'umbrella',
+	Sweater: 'sweater',
+	WinterHat: 'winterhat',
+	Shoe: 'shoe',
 };
 
 export default Clothes;

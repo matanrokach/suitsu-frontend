@@ -10,9 +10,9 @@ const Home = props => {
 
 	return (
 		<>
-			<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginTop: 40 }}>
+			{/* <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginTop: 40 }}>
 				<Label>{`Hello ${user.name}`}</Label>
-			</div>
+			</div> */}
 			
 			<Suggestion />
 			<History />

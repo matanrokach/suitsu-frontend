@@ -8,6 +8,7 @@ import Row from './Row';
 import Button from './Button';
 import Text from './Text';
 import Table from './Table';
+import Title from './Title/Title';
 
 export {
 	Navbar,
@@ -20,4 +21,5 @@ export {
 	Button,
 	Text,
 	Table,
+	Title,
 };

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import { Input, Label, Row, Button, Text } from '../styled-components';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../features/auth/Auth';
+import { selectLoginError } from '../features/auth/authSlice';
 
 const StyledRow = styled(Row)`
 	margin-top: 10px;
@@ -13,6 +15,8 @@ const StyledRow = styled(Row)`
 const Login = ({}) => {
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
+
+	const loginError = useSelector(selectLoginError);
 
 	const { login } = useAuth();
 
@@ -73,6 +77,7 @@ const Login = ({}) => {
 						value={password}
 					/>
 				</StyledRow>
+				<StyledRow>{loginError}</StyledRow>
 				<StyledRow>
 					<Button onClick={onLoginClick}>
 						<Text>{'LOGIN'}</Text>

@@ -4,6 +4,7 @@ import { api } from '../../services';
 const suggestionSlice = createSlice({
 	initialState: {
 		suggestion: {},
+		weather: {},
 		isLoading: false,
 	},
 	name: 'suggestion',
@@ -12,7 +13,9 @@ const suggestionSlice = createSlice({
 			state.isLoading = true;
 		},
 		getSuggestionSuccess: (state, action) => {
-			state.suggestion = action.payload.suggestion;
+			console.log('>>>>', action.payload);
+			state.suggestion = action.payload.suggestion.suggestion;
+			state.weather = action.payload.suggestion.suggestion.weather;
 			state.isLoading = false;
 			console.log('Suggestion', action.payload);
 		},
@@ -28,6 +31,7 @@ const suggestionSlice = createSlice({
 export const { getSuggestion, getSuggestionSuccess, getSuggestionFailure } = suggestionSlice.actions;
 
 export const selectSuggestion = state => state.suggestion.suggestion;
+export const selectWeather = state => state.suggestion.weather;
 export const selectIsLoading = state => state.suggestion.isLoading;
 
 export default suggestionSlice.reducer;

@@ -1,60 +1,55 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-const loginWithServer = (userName, password) => {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			console.log('userName', userName);
-			console.log('password', password);
-			if (userName && password) {
-				return resolve({
-					name: userName,
-					id: '1234567890',
-				});
-			}
-			reject('username or password is incorrect');
-		}, 1000);
-	});
-};
-
-export const loginAction = createAsyncThunk(
-	'auth/login',
-	async ({ userName, password }) => {
-		// try {
-			const user = await loginWithServer(userName, password);
-			return {
-				userName: user.name,
-				userId: user.id,
-			}
-		// } catch (error) {
-		// 	return error.message;
-		// }
-	}
-)
+import { api } from '../../services';
 
 export const authSlice = createSlice({
 	name: 'auth',
 	initialState: {
 		user: {},
+		error: '',
 	},
 	reducers: {
-		
-		logout: (state, action) => {
-			state = authSlice.initialState;
-		}
-	},
-	extraReducers: {
-		[loginAction.fulfilled]: (state, action) => {
+		login: (state, action) => {},
+		loginSuccess: (state, action) => {
 			state.user.name = action.payload.userName;
 			state.user.id = action.payload.userId;
 		},
-		[loginAction.rejected]: (state, action) => {
-			// state.user.error = action.payload.error;
+		loginFailure: (state, action) => {
+			state.error = action.payload.error;
 		},
-	}
+		logout: (state, action) => {
+			// state = authSlice.initialState;
+		},
+		logoutSuccess: (state, action) => {
+			state = authSlice.initialState;
+		},
+		logoutFailure: (state, action) => {
+			// state = authSlice.initialState;
+		},
+	},
 });
 
-export const { logout } = authSlice.actions;
+export const {
+	logout,
+	logoutSuccess,
+	logoutFailure,
+	login,
+	loginSuccess,
+	loginFailure,
+} = authSlice.actions;
 
-export const selectUser = state => state.auth.user;
+export const selectUser = (state) => state.auth.user;
+export const selectLoginError = (state) => state.auth.error;
 
 export default authSlice.reducer;
+
+export const loginLocal = ({ userName, password }) => async (dispatch) => {
+	try {
+		dispatch(login());
+		const token = await api.loginLocal(userName, password);
+		const user = await api.fetchCurrentUser();
+		dispatch(loginSuccess({ userName: user.name, userId: user.id }));
+	} catch (error) {
+		console.log('ERROR', error);
+		dispatch(loginFailure({ error }));
+	}
+};

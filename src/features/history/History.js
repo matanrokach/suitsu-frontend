@@ -5,7 +5,7 @@ import {
 	selectHistory,
 	selectIsLoading,
 } from '../history/historySlice';
-import { Label, Table } from '../../styled-components';
+import { Label, Table, Title } from '../../styled-components';
 import styles from './History.module.scss';
 
 const History = (props) => {
@@ -29,10 +29,10 @@ const History = (props) => {
 	const rows = history;
 	return (
 		<div className={styles.container}>
-			<Label>{'History'}</Label>
+			<Title>{'History'}</Title>
 
 			<Table {...{
-					header: tableHeader,
+					// header: tableHeader,
 					data: rows,
 				}}
 			/>

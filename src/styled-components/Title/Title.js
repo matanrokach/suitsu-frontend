@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import styles from './title.module.scss';
 
 const StyledLabel = styled.label`
 	margin: 2px;
 	font-size: 18px;
 `;
 
-const Label = ({ children, size, ...props }) => {
+const Title = ({ children, ...props }) => {
 	return (
-		<StyledLabel {...props} style={{ ...props.style, fontSize: size }}>
+		<div className={styles.text} {...props}>
 			{children}
-		</StyledLabel>
+		</div>
 	);
 };
 
-export default Label;
+export default Title;
