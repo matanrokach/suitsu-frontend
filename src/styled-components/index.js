@@ -1,5 +1,4 @@
-import Navbar from './Navbar';
-import Navbar2 from './Navbar/Navbar';
+import Navbar from './Navbar/Navbar';
 import Container from './Container';
 import Logo from './Logo';
 import Avatar from './Avatar';
@@ -14,7 +13,6 @@ import Spinner from './Spinner/Spinner';
 
 export {
 	Navbar,
-	Navbar2,
 	Container,
 	Logo,
 	Avatar,

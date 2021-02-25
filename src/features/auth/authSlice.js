@@ -1,40 +1,43 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { api } from '../../services';
+import { api, storageService } from '../../services';
+
+const initialState = {
+  user: {},
+  error: '',
+};
 
 export const authSlice = createSlice({
-	name: 'auth',
-	initialState: {
-		user: {},
-		error: '',
-	},
-	reducers: {
-		login: (state, action) => {},
-		loginSuccess: (state, action) => {
-			state.user.name = action.payload.userName;
-			state.user.id = action.payload.userId;
-		},
-		loginFailure: (state, action) => {
-			state.error = action.payload.error;
-		},
-		logout: (state, action) => {
-			// state = authSlice.initialState;
-		},
-		logoutSuccess: (state, action) => {
-			state = authSlice.initialState;
-		},
-		logoutFailure: (state, action) => {
-			// state = authSlice.initialState;
-		},
-	},
+  name: 'auth',
+  initialState,
+  reducers: {
+    loginStart: (state, action) => {},
+    loginSuccess: (state, action) => {
+      state.user.name = action.payload.name;
+      state.user.id = action.payload.id;
+      state.user.email = action.payload.email;
+    },
+    loginFailure: (state, action) => {
+      state.error = action.payload.error;
+    },
+    logoutStart: (state, action) => {
+      // state = authSlice.initialState;
+    },
+    logoutSuccess: (state, action) => {
+      return initialState;
+    },
+    logoutFailure: (state, action) => {
+      // state = authSlice.initialState;
+    },
+  },
 });
 
 export const {
-	logout,
-	logoutSuccess,
-	logoutFailure,
-	login,
-	loginSuccess,
-	loginFailure,
+  logoutStart,
+  logoutSuccess,
+  logoutFailure,
+  loginStart,
+  loginSuccess,
+  loginFailure,
 } = authSlice.actions;
 
 export const selectUser = (state) => state.auth.user;
@@ -43,18 +46,40 @@ export const selectLoginError = (state) => state.auth.error;
 export default authSlice.reducer;
 
 export const loginLocal = ({ userName, password }) => async (dispatch) => {
-	try {
-		dispatch(login());
-		const res = await api.loginLocal(userName, password);
-		const token = res?.data?.token;
-		localStorage.setItem('token', token);
-		api.setAuthHeader(token);
-		const response = await api.fetchCurrentUser();
-		console.log('response', response);
-		const user = response?.data;
-		dispatch(loginSuccess({ userName: user.name, userId: user.id }));
-	} catch (error) {
-		console.log('ERROR', error);
-		dispatch(loginFailure({ error }));
-	}
+  try {
+    dispatch(loginStart());
+    const tokenRes = await api.loginLocal(userName, password);
+    const token = tokenRes?.data?.token;
+
+    storageService.setItem('token', token);
+    api.setAuthHeader(token);
+
+    const userRes = await api.fetchCurrentUser();
+    const user = userRes?.data;
+
+    const { name, id, email } = user;
+
+    dispatch(loginSuccess({ name, id, email }));
+  } catch (error) {
+    console.log('ERROR', error);
+    dispatch(loginFailure({ error }));
+  }
+};
+
+export const logout = () => async (dispatch) => {
+  try {
+    console.log('LOGOUT');
+    dispatch(logoutStart({}));
+
+    // sending a request to the backend is optional
+    // await api.logout();
+
+    storageService.removeItem('token');
+    api.removeAuthHeader();
+    console.log('111');
+    dispatch(logoutSuccess({}));
+  } catch (error) {
+    console.log('ERROR', error);
+    dispatch(logoutFailure({ error }));
+  }
 };

@@ -1,10 +1,22 @@
 $breakpointMobile: 375px;
 $breakpointTablet: 768px;
 
+$xsBreakpoint: 0px;
+$smBreakpoint: 600px;
+$mdBreakpoint: 960px;
+$lgBreakpoint: 1280px;
+$xlBreakpoint: 1920px;
+
 
 $mobile: '(max-width: #{$breakpointMobile})';
 $tablet: '(max-width: #{$breakpointTablet})';
 $desktop: '(min-width: #{$breakpointTablet})';
+
+$xs: '(max-width: #{$xsBreakpoint})';
+$sm: '(max-width: #{$smBreakpoint})';
+$md: '(max-width: #{$mdBreakpoint})';
+$lg: '(max-width: #{$lgBreakpoint})';
+$xl: '(max-width: #{$xlBreakpoint})';
 
 :export {
   breakpointMobile: $breakpointMobile;
@@ -12,4 +24,9 @@ $desktop: '(min-width: #{$breakpointTablet})';
   mobile: unquote($mobile);
   tablet: unquote($tablet);
   desktop: unquote($desktop);
+  xs: unquote($xs);
+  sm: unquote($sm);
+  md: unquote($md);
+  lg: unquote($lg);
+  xl: unquote($xl);
 }

@@ -52,10 +52,15 @@ const setAuthHeader = (token) => {
 	return axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 
+const removeAuthHeader = (token) => {
+	return axiosInstance.defaults.headers.common.Authorization = null;
+}
+
 export default {
   getSuggestion,
   getHistory,
   loginLocal,
   fetchCurrentUser,
   setAuthHeader,
+  removeAuthHeader,
 };

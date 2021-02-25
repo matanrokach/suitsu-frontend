@@ -9,8 +9,8 @@ const useAuth = (props) => {
 		return dispatch(loginLocal({ userName, password }));
 	};
 
-	const logout = ({ userName, password }) => {
-		return dispatch(logoutAction({ userName, password }));
+	const logout = () => {
+		return dispatch(logoutAction());
 	};
 
 	return {

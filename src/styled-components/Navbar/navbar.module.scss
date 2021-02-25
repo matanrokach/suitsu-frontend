@@ -17,16 +17,6 @@
 	justify-content: center;
 }
 
-.item {
-    color: $white;
-	padding: 10px 20px;
-	margin: 0 15px;
-	border: 1px solid $white;
-	border-radius: 7px;
-	display: inline-block;
-	text-decoration: none;
-}
-
 .row {
     display: flex;
 	flex-direction: row;
@@ -48,12 +38,6 @@
 
 @media #{$desktop} {
     .menuIcon {
-        display: none;
-    }
-}
-
-@media #{$tablet} {
-    .item {
         display: none;
     }
 }

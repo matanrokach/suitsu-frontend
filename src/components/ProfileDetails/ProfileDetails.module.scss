@@ -1,0 +1,33 @@
+@import '../../assets//style/media.module.scss';
+
+.pictureContainer {
+  justify-content: flex-end;
+  display: flex;
+  margin: 10px;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.detailsContainer {
+  justify-content: flex-start;
+  align-items: flex-end;
+  display: flex;
+  margin: 10px;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+@media #{$md} {
+  .pictureContainer {
+      justify-content: center;
+  }
+
+  .detailsContainer {
+      justify-content: center;
+  }
+}
