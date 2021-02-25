@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { api } from '../../services';
-import historyParser from './history.parser';
 
 const historySlice = createSlice({
 	initialState: {
@@ -39,7 +38,7 @@ export const fetchHistory = () => async dispatch => {
 		const response = await api.getHistory();
 
 		const data = {
-			history: (response?.data?.results || []).map(historyParser.parseHistory),
+			history: (response?.data?.results || []),
 		};
 
 		dispatch(getHistorySuccess(data));

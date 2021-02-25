@@ -46,13 +46,13 @@
     font-weight: bold;
 }
 
-@media (min-width: $breakpointTablet) {
+@media #{$desktop} {
     .menuIcon {
         display: none;
     }
 }
 
-@media (max-width: $breakpointTablet) {
+@media #{$tablet} {
     .item {
         display: none;
     }

@@ -45,8 +45,13 @@ export default authSlice.reducer;
 export const loginLocal = ({ userName, password }) => async (dispatch) => {
 	try {
 		dispatch(login());
-		const token = await api.loginLocal(userName, password);
-		const user = await api.fetchCurrentUser();
+		const res = await api.loginLocal(userName, password);
+		const token = res?.data?.token;
+		localStorage.setItem('token', token);
+		api.setAuthHeader(token);
+		const response = await api.fetchCurrentUser();
+		console.log('response', response);
+		const user = response?.data;
 		dispatch(loginSuccess({ userName: user.name, userId: user.id }));
 	} catch (error) {
 		console.log('ERROR', error);

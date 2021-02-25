@@ -41,8 +41,6 @@ const History = (props) => {
 		)
 	}
 
-	const tableHeader = ['date', 'temp', 'weather', 'suggestion'];
-
 	const rows = history;
 	return (
 		<div className={styles.container}>
