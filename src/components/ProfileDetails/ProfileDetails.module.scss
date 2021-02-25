@@ -18,16 +18,16 @@
 }
 
 .textContainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 @media #{$md} {
   .pictureContainer {
-      justify-content: center;
+    justify-content: center;
   }
 
   .detailsContainer {
-      justify-content: center;
+    justify-content: center;
   }
 }

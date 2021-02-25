@@ -6,10 +6,10 @@ import PageTitle from './PageTitle/PageTitle';
 import AboutContent from './AboutContent/AboutContent';
 
 export {
-	SuggestionItem,
-	Popover,
-	LoginLocal,
-	ProfileDetails,
-	PageTitle,
-	AboutContent,
+  SuggestionItem,
+  Popover,
+  LoginLocal,
+  ProfileDetails,
+  PageTitle,
+  AboutContent,
 };

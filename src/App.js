@@ -1,11 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { selectUser } from './features/auth/authSlice';
 import { Navbar, Container } from './styled-components';
 import { Home, About, Profile, Login } from './pages';

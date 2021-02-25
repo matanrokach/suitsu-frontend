@@ -5,8 +5,8 @@ import suggestionReducer from '../features/suggestion/suggestionSlice';
 
 export default configureStore({
   reducer: {
-		auth: authReducer,
-		history: historyReducer,
-		suggestion: suggestionReducer,
+    auth: authReducer,
+    history: historyReducer,
+    suggestion: suggestionReducer,
   },
 });

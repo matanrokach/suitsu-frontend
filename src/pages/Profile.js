@@ -11,7 +11,6 @@ const Strings = {
 };
 
 const Profile = (props) => {
-
   return (
     <div>
       <PageTitle>{Strings.Title}</PageTitle>

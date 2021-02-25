@@ -1,5 +1,5 @@
 const Formats = {
-	DateFormat: 'DD MMM YYYY',
+  DateFormat: 'DD MMM YYYY',
 };
 
 export default Formats;

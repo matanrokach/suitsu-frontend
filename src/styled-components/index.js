@@ -12,16 +12,16 @@ import Title from './Title/Title';
 import Spinner from './Spinner/Spinner';
 
 export {
-	Navbar,
-	Container,
-	Logo,
-	Avatar,
-	Input,
-	Label,
-	Row,
-	Button,
-	Text,
-	Table,
-	Title,
-	Spinner,
+  Navbar,
+  Container,
+  Logo,
+  Avatar,
+  Input,
+  Label,
+  Row,
+  Button,
+  Text,
+  Table,
+  Title,
+  Spinner,
 };

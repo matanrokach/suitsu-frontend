@@ -19,15 +19,11 @@ export const authSlice = createSlice({
     loginFailure: (state, action) => {
       state.error = action.payload.error;
     },
-    logoutStart: (state, action) => {
-      // state = authSlice.initialState;
-    },
+    logoutStart: (state, action) => {},
     logoutSuccess: (state, action) => {
       return initialState;
     },
-    logoutFailure: (state, action) => {
-      // state = authSlice.initialState;
-    },
+    logoutFailure: (state, action) => {},
   },
 });
 

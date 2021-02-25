@@ -10,25 +10,25 @@ import { Weather } from '../../constants';
 const ICON_WIDTH = 150;
 
 const getWeatherIcons = (width = ICON_WIDTH) => ({
-	[Weather.Cloudy]: <Cloud width={width} />,
-	[Weather.Fog]: <Fog width={width} />,
-	[Weather.Thunderstorms]: <Storm width={width} />,
-	[Weather.PartlyCloudy]: <SunCloud width={width} />,
-	[Weather.Sunny]: <Sun width={width} fill={'#ffbb00'} />,
-	[Weather.Tornado]: <Storm width={width} />,
-	[Weather.HazySunshine]: <Sun width={width} />,
-	[Weather.Showers]: <Rain width={width} />,
+  [Weather.Cloudy]: <Cloud width={width} />,
+  [Weather.Fog]: <Fog width={width} />,
+  [Weather.Thunderstorms]: <Storm width={width} />,
+  [Weather.PartlyCloudy]: <SunCloud width={width} />,
+  [Weather.Sunny]: <Sun width={width} fill={'#ffbb00'} />,
+  [Weather.Tornado]: <Storm width={width} />,
+  [Weather.HazySunshine]: <Sun width={width} />,
+  [Weather.Showers]: <Rain width={width} />,
 });
 
 const WeatherNames = {
-	[Weather.Cloudy]: 'Cloudy',
-	[Weather.Fog]: 'Fog',
-	[Weather.Thunderstorms]: 'Thunderstorms',
-	[Weather.PartlyCloudy]: 'Partly cloudy',
-	[Weather.Sunny]: 'Sunny',
-	[Weather.Tornado]: 'Tornado',
-	[Weather.HazySunshine]: 'Hazy sunshine',
-	[Weather.Showers]: 'Showers',
+  [Weather.Cloudy]: 'Cloudy',
+  [Weather.Fog]: 'Fog',
+  [Weather.Thunderstorms]: 'Thunderstorms',
+  [Weather.PartlyCloudy]: 'Partly cloudy',
+  [Weather.Sunny]: 'Sunny',
+  [Weather.Tornado]: 'Tornado',
+  [Weather.HazySunshine]: 'Hazy sunshine',
+  [Weather.Showers]: 'Showers',
 };
 
 const WeatherIcons = getWeatherIcons(ICON_WIDTH);

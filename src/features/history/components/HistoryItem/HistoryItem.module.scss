@@ -1,17 +1,16 @@
 .item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-
-    &__suggestionItem {
-        padding-top: 16px;
-    }
+  &__suggestionItem {
+    padding-top: 16px;
+  }
 }
 
 .suggestionItem {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 16px;
 }

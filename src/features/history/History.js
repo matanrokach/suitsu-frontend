@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-	fetchHistory,
-	selectHistory,
-	selectIsLoading,
+  fetchHistory,
+  selectHistory,
+  selectIsLoading,
 } from '../history/historySlice';
 import { Label, Table, Title, Spinner } from '../../styled-components';
 import styles from './History.module.scss';
@@ -18,39 +18,41 @@ import CardContent from '@material-ui/core/CardContent';
 import HistoryItem from './components/HistoryItem/HistoryItem';
 
 const Strings = {
-	Title: 'History',
+  Title: 'History',
 };
 
 const History = (props) => {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const history = useSelector(selectHistory);
-	const isLoading = useSelector(selectIsLoading);
+  const history = useSelector(selectHistory);
+  const isLoading = useSelector(selectIsLoading);
 
-	console.log('history', history);
+  console.log('history', history);
 
-	useEffect(() => {
-		dispatch(fetchHistory());
-	}, []);
+  useEffect(() => {
+    dispatch(fetchHistory());
+  }, []);
 
-	if (isLoading) {
-		return (
-			<div className={styles.container}>
-				<Spinner />
-			</div>
-		)
-	}
+  if (isLoading) {
+    return (
+      <div className={styles.container}>
+        <Spinner />
+      </div>
+    );
+  }
 
-	const rows = history;
-	return (
-		<div className={styles.container}>
-			<Title>{Strings.Title}</Title>
+  const rows = history;
+  return (
+    <div className={styles.container}>
+      <Title>{Strings.Title}</Title>
 
-			<Grid container style={{ display: 'flex', flexDirection: 'column' }}>
-				{rows.map(row => <HistoryItem>{row}</HistoryItem>)}
-			</Grid>
-		</div>
-	);
+      <Grid container style={{ display: 'flex', flexDirection: 'column' }}>
+        {rows.map((row) => (
+          <HistoryItem>{row}</HistoryItem>
+        ))}
+      </Grid>
+    </div>
+  );
 };
 
 export default History;
