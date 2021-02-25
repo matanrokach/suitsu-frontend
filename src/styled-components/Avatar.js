@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const StyledNavItemAvatar = styled.div`
 	color: #fff;
-	width: 45px;
-	height: 45px;
+	width: 40px;
+	height: 40px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -24,7 +24,7 @@ const getInitials = (name) => {
 	return name.match(/\b(\w)/g).join('');
 }
 
-const Avatar = ({ name='Matan Rokach' }) => {
+const Avatar = ({ name = 'Matan Rokach' }) => {
 
 	return (
 		<StyledNavItemAvatar>

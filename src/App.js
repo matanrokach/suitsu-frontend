@@ -5,7 +5,7 @@ import { Counter } from './features/counter/Counter';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
 import { selectUser } from './features/auth/authSlice';
-import { Navbar, Container } from './styled-components';
+import { Navbar2, Container } from './styled-components';
 import { Home, About, Profile, Login } from './pages';
 import { PrivateRoute } from './routes';
 
@@ -41,7 +41,7 @@ const App = () => {
 
 	return (
 		<Router>
-			<Navbar {...{ items, userName: user.name, isLoggedIn }} />
+			<Navbar2 {...{ items, userName: user.name, isLoggedIn }} />
 			<Container>
 				<Switch>
 					<PrivateRoute path='/about' isLoggedIn={isLoggedIn}>

@@ -1,0 +1,14 @@
+$breakpointMobile: 375px;
+$breakpointTablet: 768px;
+
+// $media: (
+  $mobile: '(max-width: #{$breakpointMobile})';
+  $tablet: '(max-width: #{$breakpointTablet})';
+// );
+
+:export {
+  breakpointMobile: $breakpointMobile;
+  breakpointTablet: $breakpointTablet;
+  mobile: unquote($mobile);
+  tablet: unquote($tablet);
+}

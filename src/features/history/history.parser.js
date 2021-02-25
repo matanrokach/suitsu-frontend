@@ -6,6 +6,7 @@ import { Label } from '../../styled-components';
 import { DateTimeFormats, DataTypes } from '../../constants';
 
 const parseHistory = (rawHistoryRow) => {
+	return rawHistoryRow;
 	return Object.keys(rawHistoryRow).map(cell => {
 		if (cell === DataTypes.Suggestion) {
 			return rawHistoryRow[cell].map(c => (<Popover text={clothesNames[c]} style={{ padding: 5 }}>{getClothesIcons(30)[c]}</Popover>));

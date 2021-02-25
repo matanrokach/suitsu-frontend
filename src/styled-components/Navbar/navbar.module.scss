@@ -1,0 +1,59 @@
+@import '../../assets/style/colors.module.scss';
+@import '../../assets/style/media.module.scss';
+
+.container {
+    box-sizing: border-box;
+	display: flex;
+	background-color: $primary;
+	padding: 10px 10px;
+	align-items: center;
+	justify-content: center;
+}
+
+.itemsArea {
+    display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+}
+
+.item {
+    color: $white;
+	padding: 10px 20px;
+	margin: 0 15px;
+	border: 1px solid $white;
+	border-radius: 7px;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.row {
+    display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.menuIcon {
+    display: flex;
+    padding-right: 10px;
+    justify-content: center;
+}
+
+.drawerItem {
+    text-decoration: none;
+    display: inline-block;
+    color: $primary;
+    font-weight: bold;
+}
+
+@media (min-width: $breakpointTablet) {
+    .menuIcon {
+        display: none;
+    }
+}
+
+@media (max-width: $breakpointTablet) {
+    .item {
+        display: none;
+    }
+}

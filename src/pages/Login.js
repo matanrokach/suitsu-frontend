@@ -1,90 +1,36 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import styled from 'styled-components';
-import Grid from '@material-ui/core/Grid';
-import { Input, Label, Row, Button, Text } from '../styled-components';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../features/auth/Auth';
-import { selectLoginError } from '../features/auth/authSlice';
+import { LoginLocal } from '../components';
+import LoginHeader from '../components/LoginHeader/LoginHeader';
 
-const StyledRow = styled(Row)`
-	margin-top: 10px;
-	margin-bottom: 10px;
-`;
+const Strings = {
+	LoginHeader: 'Login',
+};
 
-const Login = ({}) => {
-	const [userName, setUserName] = useState('');
-	const [password, setPassword] = useState('');
-
-	const loginError = useSelector(selectLoginError);
-
+const Login = (props) => {
 	const { login } = useAuth();
 
 	const history = useHistory();
+
 	// const initialRoute = items.find((item) => item.name === 'Home');
-	const initialRoute = {name: 'Home', path: '/'};
+	const initialRoute = { name: 'Home', path: '/' };
+
 	const onLogin = () => {
 		initialRoute &&
 			history.push(history.location.state.referrer || initialRoute.path);
 	};
 
-	const onLoginClick = async (e) => {
+	const onLoginClick = (userName, password) => async (e) => {
 		await login({ userName, password });
 		onLogin && onLogin();
 	};
 
 	return (
-		<Grid
-			container
-			style={{ alignItems: 'center', justifyContent: 'center', paddingTop: 20 }}
-		>
-			<Grid
-				item
-				lg={6}
-				style={{
-					boxSizing: 'border-box',
-					display: 'flex',
-					flex: 1,
-					flexDirection: 'column',
-					alignItems: 'center',
-					justifyContent: 'center',
-					borderWidth: 1,
-					borderColor: '#aaaaaa',
-					borderStyle: 'solid',
-				}}
-			>
-				<Text >Login</Text>
-				<StyledRow>
-					<Label for={'username'}>
-						<Text>{'Username'}</Text>
-					</Label>
-					<Input
-						id={'username'}
-						placeholder={'username'}
-						onChange={(e) => setUserName(e.target.value)}
-						value={userName}
-					/>
-				</StyledRow>
-				<StyledRow>
-					<Label for={'password'}>
-						<Text>{'Password'}</Text>
-					</Label>
-					<Input
-						type={'password'}
-						id={'password'}
-						placeholder={'password'}
-						onChange={(e) => setPassword(e.target.value)}
-						value={password}
-					/>
-				</StyledRow>
-				<StyledRow>{loginError}</StyledRow>
-				<StyledRow>
-					<Button onClick={onLoginClick}>
-						<Text>{'LOGIN'}</Text>
-					</Button>
-				</StyledRow>
-			</Grid>
-		</Grid>
+		<>
+			<LoginHeader {...{ header: Strings.LoginHeader }} />
+			<LoginLocal {...{ onLogin: onLoginClick }} />
+		</>
 	);
 };
 

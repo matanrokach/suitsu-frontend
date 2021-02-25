@@ -5,8 +5,21 @@ import {
 	selectHistory,
 	selectIsLoading,
 } from '../history/historySlice';
-import { Label, Table, Title } from '../../styled-components';
+import { Label, Table, Title, Spinner } from '../../styled-components';
 import styles from './History.module.scss';
+import Grid from '@material-ui/core/Grid';
+import moment from 'moment';
+import { getClothesIcons, clothesNames } from '../../assets/svgs/ClothesIcons';
+import { getWeatherIcons, WeatherNames } from '../../assets/svgs/WeatherIcons';
+import { Popover } from '../../components';
+import { DateTimeFormats, DataTypes } from '../../constants';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import HistoryItem from './components/HistoryItem/HistoryItem';
+
+const Strings = {
+	Title: 'History',
+};
 
 const History = (props) => {
 	const dispatch = useDispatch();
@@ -21,7 +34,11 @@ const History = (props) => {
 	}, []);
 
 	if (isLoading) {
-		return 'Loading history...';
+		return (
+			<div className={styles.container}>
+				<Spinner />
+			</div>
+		)
 	}
 
 	const tableHeader = ['date', 'temp', 'weather', 'suggestion'];
@@ -29,13 +46,11 @@ const History = (props) => {
 	const rows = history;
 	return (
 		<div className={styles.container}>
-			<Title>{'History'}</Title>
+			<Title>{Strings.Title}</Title>
 
-			<Table {...{
-					// header: tableHeader,
-					data: rows,
-				}}
-			/>
+			<Grid container style={{ display: 'flex', flexDirection: 'column' }}>
+				{rows.map(row => <HistoryItem>{row}</HistoryItem>)}
+			</Grid>
 		</div>
 	);
 };

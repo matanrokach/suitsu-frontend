@@ -1,0 +1,14 @@
+$Blue: #4d5bf2;
+$Grey: #aabbcc;
+$White: #fff;
+
+$primary: $Blue;
+$grey: $Grey;
+$white: $White;
+
+
+:export {
+    Primary: $primary;
+    Grey: $grey;
+    White: $white;
+}
