@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { api } from '../../services';
 
+const initialState = {
+  suggestion: [],
+  weather: {},
+  isLoading: false,
+  error: '',
+};
+
 const suggestionSlice = createSlice({
-  initialState: {
-    suggestion: {},
-    weather: {},
-    isLoading: false,
-  },
+  initialState,
   name: 'suggestion',
   reducers: {
     getSuggestion: (state, action) => {
+      state.error = '';
       state.isLoading = true;
     },
     getSuggestionSuccess: (state, action) => {
@@ -18,9 +22,10 @@ const suggestionSlice = createSlice({
       state.isLoading = false;
     },
     getSuggestionFailure: (state, action) => {
-      state.suggestion = [];
-      state.error = action.payload;
-      state.isLoading = false;
+      return {
+        ...initialState,
+        error: action.payload.error.message,
+      };
     },
   },
 });
@@ -34,6 +39,7 @@ export const {
 export const selectSuggestion = (state) => state.suggestion.suggestion;
 export const selectWeather = (state) => state.suggestion.weather;
 export const selectIsLoading = (state) => state.suggestion.isLoading;
+export const selectError = (state) => state.suggestion.error;
 
 export default suggestionSlice.reducer;
 
@@ -48,6 +54,6 @@ export const fetchSuggestion = () => async (dispatch) => {
 
     dispatch(getSuggestionSuccess(data));
   } catch (error) {
-    dispatch(getSuggestionFailure(error));
+    dispatch(getSuggestionFailure({ error }));
   }
 };

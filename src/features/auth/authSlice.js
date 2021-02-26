@@ -1,6 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { api, storageService } from '../../services';
 
+const Strings = {
+	DefaultErrorMessage: 'Could not log in, try again later :(',
+};
+
 const initialState = {
   user: {},
   error: '',
@@ -10,20 +14,26 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    loginStart: (state, action) => {},
+    loginStart: (state, action) => {
+		return state;
+	},
     loginSuccess: (state, action) => {
       state.user.name = action.payload.name;
       state.user.id = action.payload.id;
       state.user.email = action.payload.email;
     },
     loginFailure: (state, action) => {
-      state.error = action.payload.error;
+      state.error = action.payload.error.message || Strings.DefaultErrorMessage;
     },
-    logoutStart: (state, action) => {},
+    logoutStart: (state, action) => {
+		return state;
+	},
     logoutSuccess: (state, action) => {
       return initialState;
     },
-    logoutFailure: (state, action) => {},
+    logoutFailure: (state, action) => {
+		return initialState;
+	},
   },
 });
 

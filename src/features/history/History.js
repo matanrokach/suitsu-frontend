@@ -4,18 +4,13 @@ import {
   fetchHistory,
   selectHistory,
   selectIsLoading,
+  selectError,
 } from '../history/historySlice';
 import { Label, Table, Title, Spinner } from '../../styled-components';
 import styles from './History.module.scss';
 import Grid from '@material-ui/core/Grid';
-import moment from 'moment';
-import { getClothesIcons, clothesNames } from '../../assets/svgs/ClothesIcons';
-import { getWeatherIcons, WeatherNames } from '../../assets/svgs/WeatherIcons';
-import { Popover } from '../../components';
-import { DateTimeFormats, DataTypes } from '../../constants';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import HistoryItem from './components/HistoryItem/HistoryItem';
+import { ErrorState } from '../../components';
 
 const Strings = {
   Title: 'History',
@@ -26,6 +21,7 @@ const History = (props) => {
 
   const history = useSelector(selectHistory);
   const isLoading = useSelector(selectIsLoading);
+  const errorMessage = useSelector(selectError);
 
   console.log('history', history);
 
@@ -38,6 +34,12 @@ const History = (props) => {
       <div className={styles.container}>
         <Spinner />
       </div>
+    );
+  }
+
+  if (errorMessage) {
+    return (
+      <ErrorState {...{ errorMessage }} />
     );
   }
 

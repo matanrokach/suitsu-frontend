@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
 import {
   fetchSuggestion,
   selectSuggestion,
   selectWeather,
   selectIsLoading,
+  selectError,
 } from '../suggestion/suggestionSlice';
 import { Label, Spinner } from '../../styled-components';
 import styles from './Suggestion.module.scss';
 import { SuggestionItem } from '../../components';
 import Status from './Status';
-import Grid from '@material-ui/core/Grid';
+import { ErrorState } from '../../components';
 
 const Strings = {
   Title: `That's what suits you today...`,
@@ -22,6 +24,7 @@ const Suggestion = (props) => {
   const suggestion = useSelector(selectSuggestion);
   const weather = useSelector(selectWeather);
   const isLoading = useSelector(selectIsLoading);
+  const errorMessage = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchSuggestion());
@@ -32,6 +35,12 @@ const Suggestion = (props) => {
       <div className={styles.container}>
         <Spinner />
       </div>
+    );
+  }
+
+  if (errorMessage) {
+    return (
+      <ErrorState {...{ errorMessage }} />
     );
   }
 

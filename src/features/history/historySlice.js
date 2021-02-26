@@ -1,14 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { api } from '../../services';
 
+const initialState = {
+  history: [],
+  isLoading: false,
+  error: '',
+};
+
 const historySlice = createSlice({
-  initialState: {
-    history: [],
-    isLoading: false,
-  },
+  initialState,
   name: 'history',
   reducers: {
     getHistory: (state, action) => {
+      state.error = '';
       state.isLoading = true;
     },
     getHistorySuccess: (state, action) => {
@@ -17,10 +21,10 @@ const historySlice = createSlice({
       console.log('History', action.payload);
     },
     getHistoryFailure: (state, action) => {
-      state.history = [];
-      state.error = action.payload;
-      state.isLoading = false;
-      console.log('error', action.payload);
+      return {
+        ...initialState,
+        error: action.payload.error.message,
+      };
     },
   },
 });
@@ -33,6 +37,7 @@ export const {
 
 export const selectHistory = (state) => state.history.history;
 export const selectIsLoading = (state) => state.history.isLoading;
+export const selectError = (state) => state.history.error;
 
 export default historySlice.reducer;
 
@@ -47,6 +52,6 @@ export const fetchHistory = () => async (dispatch) => {
 
     dispatch(getHistorySuccess(data));
   } catch (error) {
-    dispatch(getHistoryFailure(error));
+    dispatch(getHistoryFailure({ error }));
   }
 };
