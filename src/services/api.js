@@ -22,7 +22,7 @@ const loginLocal = (email, password) => {
     password,
   };
 
-  return axiosInstance.put('/auth/login', params);
+  return axiosInstance.post('/auth/login', params);
 };
 
 const fetchCurrentUser = () => {

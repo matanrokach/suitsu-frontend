@@ -1,9 +1,9 @@
-import { ReactComponent as Cloud } from './weather/cloud.svg';
-import { ReactComponent as Fog } from './weather/fog.svg';
+import { ReactComponent as Cloud } from './weather/Cloud.svg';
+import { ReactComponent as Fog } from './weather/Fog.svg';
 import { ReactComponent as Rain } from './weather/Rain.svg';
 import { ReactComponent as Snow } from './weather/Snow.svg';
 import { ReactComponent as Storm } from './weather/Storm.svg';
-import { ReactComponent as Sun } from './weather/sun.svg';
+import { ReactComponent as Sun } from './weather/Sun.svg';
 import { ReactComponent as SunCloud } from './weather/SunCloud.svg';
 import { Weather } from '../../constants';
 

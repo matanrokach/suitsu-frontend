@@ -15,8 +15,8 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     loginStart: (state, action) => {
-		return state;
-	},
+			return state;
+		},
     loginSuccess: (state, action) => {
       state.user.name = action.payload.name;
       state.user.id = action.payload.id;
@@ -26,14 +26,14 @@ export const authSlice = createSlice({
       state.error = action.payload.error.message || Strings.DefaultErrorMessage;
     },
     logoutStart: (state, action) => {
-		return state;
-	},
+			return state;
+		},
     logoutSuccess: (state, action) => {
       return initialState;
     },
     logoutFailure: (state, action) => {
-		return initialState;
-	},
+			return initialState;
+		},
   },
 });
 
@@ -62,6 +62,7 @@ export const loginLocal = ({ userName, password }) => async (dispatch) => {
 
     const userRes = await api.fetchCurrentUser();
     const user = userRes?.data;
+		console.log(">>> user", user)
 
     const { name, id, email } = user;
 
@@ -74,7 +75,6 @@ export const loginLocal = ({ userName, password }) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   try {
-    console.log('LOGOUT');
     dispatch(logoutStart({}));
 
     // sending a request to the backend is optional
@@ -82,7 +82,7 @@ export const logout = () => async (dispatch) => {
 
     storageService.removeItem('token');
     api.removeAuthHeader();
-    console.log('111');
+
     dispatch(logoutSuccess({}));
   } catch (error) {
     console.log('ERROR', error);
